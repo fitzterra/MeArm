@@ -1,0 +1,52 @@
+form.controls {
+    width: -moz-min-content;
+    width: -webkit-min-content;
+    width: min-content;
+    position: relative;
+}
+
+form.controls ol {
+    list-style-type: none;
+    padding: 0px;
+}
+form.controls ol li {
+    position: relative;
+    text-align: center;
+}
+form.controls ol li label {
+    width: 90px;
+    display: inline-block;
+}
+form.controls ol li output {
+    width: 30px;
+    display: inline-block;
+}
+
+form.controls ol li.horizontal label {
+    width: 100px;
+}
+form.controls ol li.vertical input {
+	-webkit-appearance: slider-vertical;
+	writing-mode: bt-lr;
+
+    vertical-align: middle;
+}
+
+form.controls fieldset div.q {
+    display: none;
+    position: absolute;
+    text-align: center;
+
+    top: 11px;
+    right: 5px;
+
+    width: 4ex;
+    height: 4ex;
+    line-height: 4ex;
+    border-radius: 50%;
+
+    font-size: 10px;
+    font-family: sans-serif;
+
+    background: orange;
+}

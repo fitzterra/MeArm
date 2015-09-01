@@ -1,0 +1,6 @@
+# All virtualenv dirs
+env/
+# All vim swap files
+.*.sw*
+# All python compiled source files
+*.pyc
