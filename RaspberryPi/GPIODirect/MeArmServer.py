@@ -217,15 +217,11 @@ class Joint(object):
         @return: A dictionary with keys 'pos', 'min', 'max' keywords with the
                  requested values. One or more of these keys will be present.
         """
-        print "In control: ", cherrypy.request.inControl
-
         arm = cherrypy.config['MeArmIF']
         joint = getattr(arm, self.jointName.lower())
 
         # Any additional detail required?
-        print args
         detail = None if len(args)==0 else args[0].lower()
-        print detail
         if detail not in [None, 'pos', 'min', 'max', 'limits', 'info']:
             raise cherrypy.HTTPError(400, "Invalid joint details request: {}"\
                                      .format(detail))
@@ -252,7 +248,6 @@ class Joint(object):
             }
         where any of the fields are optional, but at least one is required.
         """
-        print "In control: ", cherrypy.request.inControl
         # Get the JSON doc as input from the request
         json = getattr(cherrypy.request, 'json', None)
         arm = cherrypy.config['MeArmIF']

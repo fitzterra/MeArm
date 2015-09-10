@@ -48,8 +48,12 @@ form.controls ol li div.limiter {
     text-align: center;
     background: #EEE;
     border: 1px solid #EEE;
+    border-radius: 5px;
 }
-form.controls ol li div.limiter:hover {
+form.controls ol li div.limiter[contenteditable=true] {
+    background: #C2CFB8;
+}
+form.controls ol li div.limiter[contenteditable=true]:hover{
     border: 1px dotted orange;
 }
 

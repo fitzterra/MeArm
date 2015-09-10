@@ -7,7 +7,7 @@ import pigpio
 
 # Some defaults to make it easier to instantiate a MeArm object.
 armDef = {
-    'base': {'gpio':  4, 'min':  0, 'max': 180, 'home': 90},
+    'base': {'gpio':  4, 'min':  0, 'max': 180, 'home': 90, 'inv': True},
     'shoulder': {'gpio': 17, 'min': 50, 'max': 140, 'home': 90},
     'wrist': {'gpio': 27, 'min': 50, 'max': 140, 'home': 90},
     'grip': {'gpio': 22, 'min': 80, 'max': 100, 'home': 90}
@@ -30,6 +30,7 @@ class MeArm(object):
                 'min': The minimum allowed angle for the joint servo.
                 'max': The maximum allowed angle for the joint servo.
                 'home': The home angle for the joint servo.
+                'inv': Invert direction indicator. True/False and optional.
             }
 
         @param base: Base joint definition
@@ -122,7 +123,9 @@ class MeArm(object):
         # Validate that the requested angle in withing the join limits before
         # setting the angle
         if (joint['min'] <= pos <= joint['max']):
-            self.io.set_servo_pulsewidth(joint['gpio'], self.angleToPulse(pos))
+            # Handle inverted position here
+            a = joint['max']-(pos-joint['min']) if joint.get('inv', False) else pos
+            self.io.set_servo_pulsewidth(joint['gpio'], self.angleToPulse(a))
         else:
             raise ValueError("Angle {} outside of limits for {} ({} - {})"\
                              .format(pos, joint['name'], joint['min'],
