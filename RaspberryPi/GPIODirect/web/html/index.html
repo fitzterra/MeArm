@@ -1,0 +1,63 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>MeArm remote controller</title>
+        <link rel="stylesheet" href="/static/css/style.css">
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="/static/js/MeArmControl.js"></script>
+    </head>
+
+    <body>
+        <h1>MeArm remote controller</h1>
+
+        <form class="controls">
+            <fieldset class="access">
+                <legend>Arm Access</legend>
+                <button class="getstick">Grab Stick</button>
+                <input type="text" name="user" placeholder="your handle..." class="user">
+                <button class="dropstick">Drop Stick</button>
+                <div class="hasstick"></div>
+            </fieldset>
+            <fieldset class="arm">
+                <legend>Arm Controls</legend>
+                <div class="q">0</div>
+                <ol>
+                    <li class="horizontal">
+                        <label for="_%_grip">Grip</label>
+                        <input id="_%_grip" name="grip" type="range" min="0" value="90" max="180" step="1" disabled>
+                        <output for="_%_grip">90°</output>
+                        <div class="grip min limiter" data-joint="grip" data-limit="min"></div>
+                        <div class="grip max limiter" data-joint="grip" data-limit="max"></div>
+                    </li>
+                    <li class="vertical">
+                        <label for="_%_wrist">Wrist</label>
+                        <input id="_%_wrist" name="wrist" orient="vertical" type="range" min="0" value="90" max="180" step="1" disabled>
+                        <output for="_%_wrist">90°</output>
+                        <div class="wrist min limiter" data-joint="wrist" data-limit="min"></div>
+                        <div class="wrist max limiter" data-joint="wrist" data-limit="max"></div>
+                    </li>
+                    <li class="vertical">
+                        <label for="_%_shoulder">Shoulder</label>
+                        <input id="_%_shoulder" name="shoulder" orient="vertical" type="range" min="0" value="90" max="180" step="1" disabled>
+                        <output for="_%_shoulder">90°</output>
+                        <div class="shoulder min limiter" data-joint="shoulder" data-limit="min"></div>
+                        <div class="shoulder max limiter" data-joint="shoulder" data-limit="max"></div>
+                    </li>
+                    <li class="horizontal">
+                        <label for="_%_base">Base</label>
+                        <input id="_%_base" name="base" type="range" min="0" value="90" max="180" step="1" disabled>
+                        <output for="_%_base">90°</output>
+                        <div class="base min limiter" data-joint="base" data-limit="min"></div>
+                        <div class="base max limiter" data-joint="base" data-limit="max"></div>
+                    </li>
+                </ol>
+            </fieldset>
+        </form>
+
+        <div class="camera">
+            <button class="camToggle">Toggle Camera View</button>
+        </div>
+    </body>
+</html>
+
